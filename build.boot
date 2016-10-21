@@ -35,7 +35,7 @@
 (deftask versioned-jar
   [v version VERSION str "The application version"]
   (jar :main        'boot-web.core
-       :file        (str "examples/boot-web-" version ".jar")))
+       :file        (str "boot-web.jar")))
 
 
 (deftask build
@@ -43,7 +43,14 @@
   [d dir PATH #{str} "the set of directories to write to (target)."]
   (let [dir (if (seq dir) dir #{"target"})
         version (generate-version)]
-    (comp (template-index :version version) (aot) (uber) (versioned-jar :version version) (sift :include #{#".*boot-web.*.jar"}) (target :dir dir))))
+    (comp (template-index :version version)
+          (aot)
+          (uber)
+          (versioned-jar :version version)
+          (sift :include #{#".*boot-web.*.jar"})
+          (zip :file "boot-web.zip")
+          (sift :include #{#".*boot-web.*.zip"})
+          (target :dir dir))))
 
 (deftask run
   "Run the project."
