@@ -43,7 +43,7 @@
   [d dir PATH #{str} "the set of directories to write to (target)."]
   (let [dir (if (seq dir) dir #{"target"})
         version (generate-version)]
-    (comp (template-index :version version) (aot) (uber) (versioned-jar :version version) (target :dir dir))))
+    (comp (template-index :version version) (aot) (uber) (versioned-jar :version version) (sift :include #{#".*boot-web.*.jar"}) (target :dir dir))))
 
 (deftask run
   "Run the project."
