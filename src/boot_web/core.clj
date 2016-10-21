@@ -13,7 +13,7 @@
   (wrap-defaults #'routes site-defaults))
 
 (defn -main [& args]
-  (let [port 8080]
+  (let [port 5000]
     (run-jetty app {:port port :join? true})))
 
 
