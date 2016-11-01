@@ -2,10 +2,11 @@ platform: linux
 image_resource:
   type: docker-image
   source:
-    repository: 10.167.102.116:5000/boot-build
-    insecure_registries: ["10.167.102.116:5000"]
+    repository: 192.168.1.227:5000/boot-build-home
+    insecure_registries: ["192.168.1.227:5000"]
   
 inputs:
 - name: source-code
 run:
   path: source-code/build.sh
+  dir: source-code
