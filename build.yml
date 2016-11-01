@@ -8,5 +8,5 @@ image_resource:
 inputs:
 - name: source-code
 run:
-  path: source-code/build.sh
+  path: build.sh
   dir: source-code
