@@ -11,9 +11,6 @@ outputs:
 - name: binaries
 run:
   path: ./build.sh
-  dir: source-code
-run:
-  path: cp
   args:
-  - source-code/target/boot-web.zip
-  - binaries/boot-web.zip
+  - binaries
+  dir: source-code
