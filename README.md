@@ -16,3 +16,14 @@ Run the uberjar:
 
     $ java -jar target/examples/boot-web-{version}.jar
 
+
+
+
+Alternatively, run with Docker:
+
+    docker run --volume ~/.m2:/root/.m2 --volume $(pwd):/opt boot-build boot build
+
+Note the above uses the local Maven repository cache on your host machine. Otherwise, each time this image was removed and re-run, it would download all the Maven dependencies for the project.
+
+You would first need to create the boot-build image using the Dockerfile provided.
+
